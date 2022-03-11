@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">reqres</string>
+    <string name="welcome">Welcome</string>
+    <string name="app_desc">This is app for Suitmedia mobile developer test</string>
+    <string name="copyright">Copyright 2022 Suitmedia All rights reserved.</string>
+    <string name="hint_name">Type name here…</string>
+    <string name="next">Next</string>
+    <string name="user_name">User Name</string>
+    <string name="hello">Hallo,</string>
+    <string name="choose_event">Choose Event</string>
+    <string name="choose_guest">Choose Guest</string>
 </resources>
