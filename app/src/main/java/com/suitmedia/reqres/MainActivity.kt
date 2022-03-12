@@ -1,11 +1,34 @@
 package com.suitmedia.reqres
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.app.Activity
+import androidx.multidex.MultiDexApplication
+import com.suitmedia.reqres.di.component.ApplicationComponent
+import com.suitmedia.reqres.di.component.DaggerApplicationComponent
+import dagger.android.AndroidInjector
+import dagger.android.DispatchingAndroidInjector
+import dagger.android.HasAndroidInjector
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+open class MainActivity : MultiDexApplication(), HasAndroidInjector {
+
+    @Inject
+    lateinit var androidInjector : DispatchingAndroidInjector<Any>
+
+    override fun androidInjector(): AndroidInjector<Any> = androidInjector
+
+    @Inject
+    lateinit var activityDispatchAndroidInjection: DispatchingAndroidInjector<Activity>
+
+    lateinit var applicationComponent: ApplicationComponent
+
+    override fun onCreate() {
+        super.onCreate()
+        initInjection()
+        initInjection()
+    }
+
+    fun initInjection(){
+        applicationComponent = DaggerApplicationComponent.builder().application(this).build()
+        applicationComponent.Inject(this)
     }
 }
