@@ -93,6 +93,7 @@
             android:gravity="center"
             android:hint="@string/hint_name"
             android:textColorHint="@color/dim_gray"
+            android:textColor="@color/dim_black"
             android:importantForAutofill="no"
             android:padding="@dimen/_10sdp"
             android:textSize="@dimen/_10ssp" />

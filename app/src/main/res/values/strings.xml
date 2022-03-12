@@ -9,4 +9,11 @@
     <string name="hello">Hallo,</string>
     <string name="choose_event">Choose Event</string>
     <string name="choose_guest">Choose Guest</string>
+    <string name="event_name">Event name</string>
+    <string name="event_desc">Event description</string>
+    <string name="event_date">Apr 3, 2020</string>
+    <string name="event">Events</string>
+    <string name="guest">Guests</string>
+    <string name="guest_name">Guest Name</string>
+    <string name="press_back_to_exit">Press back to exit</string>
 </resources>
