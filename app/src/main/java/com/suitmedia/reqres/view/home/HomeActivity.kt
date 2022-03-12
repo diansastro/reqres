@@ -4,6 +4,7 @@ import com.jaeger.library.StatusBarUtil
 import com.jakewharton.rxbinding3.widget.textChanges
 import com.suitmedia.reqres.R
 import com.suitmedia.reqres.base.BaseMvpActivity
+import com.suitmedia.reqres.view.user.UserActivity
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -53,7 +54,7 @@ open class HomeActivity:  BaseMvpActivity<HomePresenter>(), HomeContract.View, H
 
     private fun initAction() {
         btNext.setOnClickListener {
-            println("Input Value ${etInputName.text}")
+            UserActivity.newInstance(this, etInputName.text.toString())
         }
     }
 
