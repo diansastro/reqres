@@ -55,7 +55,6 @@ open class HomeActivity:  BaseMvpActivity<HomePresenter>(), HomeContract.View, H
 
     private fun initAction() {
         btNext.setOnClickListener {
-//            UserActivity.newInstance(this, etInputName.text.toString())
             val intent = Intent(this, UserActivity::class.java)
             intent.putExtra("userName", etInputName.text.toString())
             startActivity(intent)

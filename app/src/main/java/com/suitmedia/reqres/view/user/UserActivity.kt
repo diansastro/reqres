@@ -18,22 +18,6 @@ import javax.inject.Inject
 
 open class UserActivity: BaseMvpActivity<UserPresenter>(), UserContract.View, HasAndroidInjector {
 
-//    companion object {
-//        fun newInstance(activity: Activity, userName: String) {
-//            activity.startActivity(activity.intentFor<UserActivity>(Params.USER_NAME to userName))
-//        }
-//
-//        fun newInstanceEvent(activity: Activity, eventName: String, userName: String) {
-//            activity.startActivity(activity.intentFor<UserActivity>(Params.EVENT_NAME to eventName, userName to Params.USER_NAME))
-//        }
-//    }
-
-//    private var userName: String? = ""
-//    private var eventName: String? = ""
-//    private val uName = intent.getStringExtra("userName")
-
-//    private var un = intent.getStringExtra("userName")
-
     @Inject
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
@@ -52,31 +36,14 @@ open class UserActivity: BaseMvpActivity<UserPresenter>(), UserContract.View, Ha
         StatusBarUtil.setColor(this, ContextCompat.getColor(this, R.color.white_smoke), 0)
         StatusBarUtil.setLightMode(this)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-//        initBundle()
         initView()
-        initAction()
     }
 
     override fun getLayout(): Int = R.layout.activity_user
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
-//    private fun initBundle(){
-//        intent?.extras?.let {
-//            userName = it.getString(Params.USER_NAME, "")
-//        }
-//
-//        intent?.extras?.let {
-//            eventName = it.getString(Params.EVENT_NAME, "")
-//        }
-//    }
-
-    private fun initView() {
-//        tvUserName.text = userName
-//        btEvent.text = eventName
-
-
-        val intent = intent
+    private fun initView() {val intent = intent
         val extras = intent.extras
 
         if (extras?.getString("eventName").isNullOrBlank()) {
@@ -89,15 +56,12 @@ open class UserActivity: BaseMvpActivity<UserPresenter>(), UserContract.View, Ha
             tvUserName.text = u
             btEvent.text = e
         }
-    }
 
-    private fun initAction() {
         btEvent.setOnClickListener {
-//            EventActivity.newInstance(this, userName!!)
-            val intent = Intent(this, EventActivity::class.java)
-            intent.putExtra("un", intent.getStringExtra("userName"))
-            println("Extra : ${intent.getStringExtra("userName")}")
-            startActivity(intent)
+            val i = Intent(this, EventActivity::class.java)
+            i.putExtra("un", intent.getStringExtra("userName"))
+            println("Intent : ${intent.getStringExtra("userName")}")
+            startActivity(i)
         }
 
         btGuest.setOnClickListener {
