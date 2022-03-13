@@ -36,12 +36,9 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:padding="@dimen/_15sdp"
-                android:elevation="@dimen/_2sdp"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
-                android:layout_marginBottom="@dimen/_20sdp">
+                android:layout_marginStart="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:elevation="@dimen/_2sdp">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvGuestList"
@@ -50,8 +47,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_bias="0.512"
+                    app:layout_constraintHorizontal_bias="0.487"
                     tools:itemCount="20"
                     tools:listitem="@layout/item_guest" />
 
