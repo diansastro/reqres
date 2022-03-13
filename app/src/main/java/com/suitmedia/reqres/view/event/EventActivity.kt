@@ -48,7 +48,6 @@ open class EventActivity: BaseMvpActivity<EventPresenter>(), EventContract.View 
     override fun getLayout(): Int = R.layout.activity_event
 
     private fun initView() {
-        println("Extra : ${intent.getStringExtra("un")}")
         eventData.add(EventData(1, "Dummy Event 1", "2 April, 2022", ""))
         eventData.add(EventData(2, "Dummy Event 2", "4 May, 2022", ""))
         eventData.add(EventData(3, "Dummy Event 3", "20 June, 2022", ""))
@@ -60,6 +59,7 @@ open class EventActivity: BaseMvpActivity<EventPresenter>(), EventContract.View 
                 val extras = Bundle()
                 val i = Intent(this@EventActivity, UserActivity::class.java)
                 extras.putString("userName", intent.getStringExtra("un"))
+                extras.putString("guestName", intent.getStringExtra("gn"))
                 extras.putString("eventName", eventData[position].eventName!!)
                 i.putExtras(extras)
                 startActivity(i)

@@ -1,5 +1,7 @@
 package com.suitmedia.reqres.view.guest
 
+import android.content.Intent
+import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import com.jaeger.library.StatusBarUtil
@@ -8,6 +10,7 @@ import com.suitmedia.reqres.base.BaseMvpActivity
 import com.suitmedia.reqres.data.response.GuestResponse
 import com.suitmedia.reqres.model.GuestData
 import com.suitmedia.reqres.view.adapter.GuestAdapter
+import com.suitmedia.reqres.view.user.UserActivity
 import dagger.android.AndroidInjection
 import dagger.android.DispatchingAndroidInjector
 import kotlinx.android.synthetic.main.activity_guest.*
@@ -49,6 +52,16 @@ open class GuestActivity: BaseMvpActivity<GuestPresenter>(), GuestContract.View 
 
         guestAdapter = GuestAdapter(guestData)
         guestAdapter.apply {
+            setOnItemClickListener { adapter, view, position ->
+                val extras = Bundle()
+                val i = Intent(this@GuestActivity, UserActivity::class.java)
+                extras.putString("eventName", intent.getStringExtra("en"))
+                extras.putString("userName", intent.getStringExtra("un"))
+                extras.putString("guestName", guestData[position].first_name)
+                extras.putInt("guestId", guestData[position].id!!)
+                i.putExtras(extras)
+                startActivity(i)
+            }
             notifyDataSetChanged()
         }
 

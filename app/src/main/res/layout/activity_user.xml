@@ -39,6 +39,7 @@
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_20sdp"
         android:text="@string/user_name"
+        android:maxLines="1"
         android:gravity="start"
         android:textStyle="bold"
         android:textSize="@dimen/_18ssp"
