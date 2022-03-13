@@ -22,6 +22,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".view.user.UserActivity"/>
+        <activity android:name=".view.event.EventActivity"/>
+        <activity android:name=".view.guest.GuestActivity"/>
     </application>
 
 </manifest>

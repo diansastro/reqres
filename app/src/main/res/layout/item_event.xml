@@ -19,14 +19,14 @@
             android:layout_height="@dimen/_90sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:padding="@dimen/_5sdp"
-            app:srcCompat="@drawable/img_avatar"
+            app:srcCompat="@drawable/event3"
             android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/tvEventName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_toEndOf="@id/ivEventMedia"
             android:ellipsize="end"
@@ -37,29 +37,29 @@
             android:textSize="@dimen/_13ssp" />
 
         <TextView
-            android:id="@+id/tvEventDesc"
+            android:id="@+id/tvEventDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tvEventName"
-            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:text="@string/event_desc"
             android:maxLines="2"
             android:textColor="@color/dim_black2"
             android:layout_toEndOf="@id/ivEventMedia"
-            android:textSize="@dimen/_9ssp" />
-
-        <TextView
-            android:id="@+id/tvEventData"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="@dimen/_10sdp"
-            android:paddingBottom="@dimen/_10sdp"
-            android:layout_toEndOf="@id/ivEventMedia"
-            android:gravity="end"
-            android:text="@string/event_date"
             android:textSize="@dimen/_10ssp" />
+
+<!--        <TextView-->
+<!--            android:id="@+id/tvEventDate"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_alignParentBottom="true"-->
+<!--            android:layout_marginEnd="@dimen/_10sdp"-->
+<!--            android:paddingBottom="@dimen/_10sdp"-->
+<!--            android:layout_toEndOf="@id/ivEventMedia"-->
+<!--            android:gravity="end"-->
+<!--            android:text="@string/event_date"-->
+<!--            android:textSize="@dimen/_10ssp" />-->
 
     </RelativeLayout>
 

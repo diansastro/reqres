@@ -1,11 +1,12 @@
 package com.suitmedia.reqres.view.user
 
-import android.app.Activity
+import android.content.Intent
 import androidx.core.content.ContextCompat
 import com.jaeger.library.StatusBarUtil
 import com.suitmedia.reqres.R
 import com.suitmedia.reqres.base.BaseMvpActivity
-import com.suitmedia.reqres.objects.Params
+import com.suitmedia.reqres.view.event.EventActivity
+import com.suitmedia.reqres.view.guest.GuestActivity
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -14,15 +15,24 @@ import kotlinx.android.synthetic.main.activity_user.*
 import org.jetbrains.anko.intentFor
 import javax.inject.Inject
 
+
 open class UserActivity: BaseMvpActivity<UserPresenter>(), UserContract.View, HasAndroidInjector {
 
-    companion object {
-        fun newInstance(activity: Activity, userName: String) {
-            activity.startActivity(activity.intentFor<UserActivity>(Params.USER_NAME to userName))
-        }
-    }
+//    companion object {
+//        fun newInstance(activity: Activity, userName: String) {
+//            activity.startActivity(activity.intentFor<UserActivity>(Params.USER_NAME to userName))
+//        }
+//
+//        fun newInstanceEvent(activity: Activity, eventName: String, userName: String) {
+//            activity.startActivity(activity.intentFor<UserActivity>(Params.EVENT_NAME to eventName, userName to Params.USER_NAME))
+//        }
+//    }
 
-    private var userName: String? = ""
+//    private var userName: String? = ""
+//    private var eventName: String? = ""
+//    private val uName = intent.getStringExtra("userName")
+
+//    private var un = intent.getStringExtra("userName")
 
     @Inject
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
@@ -42,7 +52,7 @@ open class UserActivity: BaseMvpActivity<UserPresenter>(), UserContract.View, Ha
         StatusBarUtil.setColor(this, ContextCompat.getColor(this, R.color.white_smoke), 0)
         StatusBarUtil.setLightMode(this)
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left)
-        initBundle()
+//        initBundle()
         initView()
         initAction()
     }
@@ -51,23 +61,47 @@ open class UserActivity: BaseMvpActivity<UserPresenter>(), UserContract.View, Ha
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
 
-    private fun initBundle(){
-        intent?.extras?.let {
-            userName = it.getString(Params.USER_NAME, "")
-        }
-    }
+//    private fun initBundle(){
+//        intent?.extras?.let {
+//            userName = it.getString(Params.USER_NAME, "")
+//        }
+//
+//        intent?.extras?.let {
+//            eventName = it.getString(Params.EVENT_NAME, "")
+//        }
+//    }
 
     private fun initView() {
-        tvUserName.text = userName
+//        tvUserName.text = userName
+//        btEvent.text = eventName
+
+
+        val intent = intent
+        val extras = intent.extras
+
+        if (extras?.getString("eventName").isNullOrBlank()) {
+            tvUserName.text = intent.getStringExtra("userName")
+            btEvent.text = getString(R.string.choose_event)
+        } else {
+            val u = extras?.getString("userName")
+            val e = extras?.getString("eventName")
+
+            tvUserName.text = u
+            btEvent.text = e
+        }
     }
 
     private fun initAction() {
         btEvent.setOnClickListener {
-            println("Event Clicked")
+//            EventActivity.newInstance(this, userName!!)
+            val intent = Intent(this, EventActivity::class.java)
+            intent.putExtra("un", intent.getStringExtra("userName"))
+            println("Extra : ${intent.getStringExtra("userName")}")
+            startActivity(intent)
         }
 
         btGuest.setOnClickListener {
-            println("Guest Clicked")
+            startActivity(intentFor<GuestActivity>())
         }
     }
 }
